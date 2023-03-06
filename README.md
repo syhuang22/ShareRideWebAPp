@@ -1,92 +1,71 @@
-# erss-hwk1-sh694-cn154
+# Django Web-App: Ride Sharing Service
+This web-app will let users
+request, drive for, and join rides.
+## Ride Owner
 
-make changes by jerry
+When a user requests a ride, he/she becomes the owner of that ride. Requesng
+a ride should involve specifying a desnaon address, a required arrival (date & me), the
+number of total passengers from the owner’s party, and oponally, a vehicle type and any other
+special requests1
+. A request will also indicate whether this ride can be shared or not – a shared
+ride can be joined by other users (ride sharers). A ride owner would be able to modify a ride
+request up unl it is confirmed (a ride becomes confirmed once a driver accepts the ride and is
+in route). A ride is open from the me it is requested unl that point. A ride owner can also
+view ride status unl the ride is complete (a ride becomes closed once a driver finishes the ride
+and marks it as complete).
 
-## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Ride Driver
+– A user can register as a driver, and in doing so will provide their name along with
+their vehicle informaon. The vehicle informaon includes the type, license plate number,
+maximum number of passengers, and oponally any other special vehicle info
+1
+. To simplify, a
+driver can only have 1 vehicle. A driver can search for open ride requests based on the ride
+request aributes. A driver can claim and start a ride service, thus confirming it. A driver can
+also complete rides that they service aer reaching the desnaon to indicate that the ride is
+finished.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Ride Sharer
+– A user can search for open ride requests by specifying a desnaon, arrival
+window (the user’s earliest and latest acceptable arrival date & me) and number of passengers
+in their party. The user can then become a ride sharer, by joining that ride. A ride sharer can
+also view the ride status, similarly to a ride owner. Finally, a ride sharer can edit their ride status
+as long as the ride is open.
+Note that your system should support mulple rides, and the same user MAY hold different
+roles in different rides. For example, a user may be an owner of a current ride, a ride sharer on
+yet a later ride in the day, and a driver of 2 rides scheduled for the following day.
 
-## Add your files
+## Features
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.oit.duke.edu/sh694/erss-hwk1-sh694-cn154.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.oit.duke.edu/sh694/erss-hwk1-sh694-cn154/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+**Create Account** – A user should be able to create an account if they do not have one.<br><br>
+**Login/Logout** – A user with an account should be able to login and logout.<br><br>
+**Driver Registraon** – A logged-in user should be able to register as a driver and enter their
+personal and vehicle info. They should also be able to access and edit their info.<br><br>
+**Ride Selecon** – If a logged-in user is part of mulple rides, she should be able to select which
+ride she wants to perform acons on. If a logged in user belongs to only one ride, you MAY
+display your ride-selecon mechanism with the one ride, or you MAY omit it (not show it). Note
+this should allow selecon of any open or confirmed rides for that user (but not complete rides).<br><br>
+**Ride Requesng** – A logged-in user should be able to request a ride. Requesng a ride should
+allow the owner to specify the desnaon address, a required arrival date / me, the number of
+total passengers from their party, a vehicle type (oponally), whether the ride may be shared by
+other users or not, and any other special requests.<br><br>
+**Ride Request Eding (Owner)** – A ride owner should be able to edit the specific requested
+aributes of the ride as long as the ride is not confirmed.<br><br>
+**Ride Status Viewing (Owner / Sharer)** – A ride owner or sharer should be able to view the
+status of their non-complete rides. For open ride requests, this should show the current ride
+details (from the original request + any updates due to sharers joining the ride). For confirmed
+ride requests, the driver and vehicle details should also be shown.<br><br>
+**Ride Status Viewing (Driver)** – A ride driver should be able to view the status of their confirmed
+rides, which should show the informaon for the owner and each sharer of the ride, including
+the number of passengers in each party. A driver should also be able to edit a ride to mark it as
+complete.<br><br>
+**Ride Searching (Driver)** – A driver should be able to search for open ride requests. Only requests
+which fit within the driver’s vehicle capacity and match the vehicle type and special request info
+(if either of those were specified in the ride request) should be shown. A driver can claim and
+start a ride service, thus confirming it. Once closed, the ride owner and each sharer should be
+nofied by email that the ride has been confirmed (hence no further changes are allowed).<br><br>
+**Ride Searching (Sharer)** – A user should be able to search for open ride requests by specifying a
+desnaon, arrival window (the user’s earliest and latest acceptable arrival me) and number
+of passengers in their party. A sharer should be able to join a selected ride, if any exist in the
+resulng list of pending rides.

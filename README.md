@@ -1,6 +1,6 @@
 # Django Web-App: Ride Sharing Service
 This web-app will let users
-request, drive for, and join rides.
+request, drive for, and join rides. <br>
 To get started, run the below command in docker-deploy directory<br>
 `sudo docker-compose up`
 ## Ride Owner

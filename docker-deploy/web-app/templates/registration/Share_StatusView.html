@@ -1,0 +1,33 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+</head>
+
+<div>
+    <h1> Ride Status</h1>
+        {% for shareRide in shareRides %}
+        Id: {{shareRide.id}} <br/>
+        <strong> Ride Destination: {{shareRide.address}}<br/>
+            Date: {{shareRide.dateTime}}</strong> <br/>
+            Owner: {{shareRide.owner}} <br/>
+            Number of Passengers: {{shareRide.num_passenger}} <br/>
+            carType: {{shareRide.carType}} <br/>
+            Status: {{shareRide.status}}<br/>
+            Special Request: {{shareRide.specialRequest}}<br/>
+            <h2>Sharers:</h2>
+            {% for sharer in shareRide.sharer.all %}
+                {{sharer}}  
+            {% endfor %}
+            {% if shareRide.driver_fname %}
+            <h3>
+                Driver: {{shareRide.driver_fname}} {{shareRide.driver_lname}}<br/>
+                Driver license: {{shareRide.license}}<br/>
+            </h3>
+            {% else %}
+                <h3><a href="{% url 'RequestEdit' shareRide.id %}">Edit Ride</a></h3>
+            {% endif %}
+        <hr>
+        {%endfor%}
+        <p><a href="{% url 'Ridesharer' %}">Back To Sharer's Page</a> </p>
+        <p><a href="{% url 'home' %}">Back To Home Page</a> </p>
+</div>

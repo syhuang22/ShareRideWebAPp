@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Driver Infomation</h1>
+        <form action = "{% url 'userLog:driverPage' %}" method = "POST">
+            
+            {% csrf_token %}
+            <label>First Name</label><br>
+            <input type="text" name="firstName" placeholder="first name"><br>
+            <label >Last Name</label><br>
+            <input type="text"name="lastName"placeholder="last name"><br>
+            <label for="cars">Car Type</label><br>
+            <select name="cars" style= "height: 40px; width: 30%; padding: 12px 20px;
+                margin: 8px 0;" id="cars">
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Crossover">Crossover</option>
+                <option value="Minivan">Minivan</option>
+            </select><br>
+            <label>License Plate Number</label><br>
+            <input type="text"  name="License Plate Number" placeholder="License Plate Number"><br>
+            <label>Number of Total Passengers(Max of 8)</label>
+            <input type="number" name="number of total passengers " min="1" max="8"><br>
+            <input type = "submit" value = "Comfirm"> <br>
+        </form>
+        <a href="{% url 'userLog:home' %}">Back To Home Page</a><br>
+    </div>
+</body>
+</html>

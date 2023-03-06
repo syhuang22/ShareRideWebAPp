@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Ride Sharer's page</h1>
+        <div>
+            <h2>Ride Status Viewing</h2>
+            <form action = "{% url 'ShareStatusView' %}" method = "POST"> 
+                {% csrf_token %}  
+                <input type = "submit" value="View Ride Status">
+            </form>
+            <p>A ride owner or sharer should be able to view the
+                status of their non-complete rides. For open ride requests, this should show the current ride
+                details (from the original request + any updates due to sharers joining the ride). For confirmed
+                ride requests, the driver and vehicle details should also be shown.
+            </p>
+        </div><br>
+        <div>
+            <h2>Search For A Ride To Claim</h2>
+            <h3>
+                Please fill out the form with valid input
+            </h3>
+            <form action = "{% url 'SharerRideSearch' %}" method = "POST">                
+                {% csrf_token %}  
+                
+                <label>Destination</label><br>
+                <input type="text" name="address" placeholder="destination"><br>
+                
+                <label>Earliest Acceptable Time</label><br>
+                <input type="datetime-local" name="dateTimeEarly"><br>
+
+                <label>Latest Acceptable Time</label><br>
+                <input type="datetime-local" name="dateTimeLate"><br>
+
+                <label>Number of Total Passengers(Max of 8)</label><br>
+                <input type="number" name="num_passenger" min="1" max="8"><br>
+                
+                <input type = "submit" value="Search">
+            </form>
+        </div><br>
+        <h2> Other Options:
+            <a href="{% url 'RideRequest' %}">Request For A Ride</a>
+            <a href="{% url 'DriverRegister' %}">Register As A Driver</a>
+        Ride Selection
+        </h2>
+        <a href="{% url 'home' %}">Back To Home Page</a>
+    </div>
+    
+</body>
+</html>

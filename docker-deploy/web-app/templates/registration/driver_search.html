@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Search Result</h1>
+        <div>
+            <h2>Status</h2>
+            
+                {% csrf_token %}
+                {% for object in objects %}
+                <h3>
+                    <hr>
+                        <p>Request ID: {{ object.id }}</p>
+                        <p>Destination: {{ object.address }}</p>
+                        <p>Arrival Time: {{ object.dateTime }}</p> 
+                        <a href="{% url 'Comfirm' object.id %}">Claim This Ride</a>
+                </h3>
+                {% endfor %}
+        </div><br>
+        <p><a href="{% url 'DriverPage' %}">Back To Driver</a> </p>
+        <p><a href="{% url 'home' %}">Back To Home Page</a> </p>
+    </div>
+</body>
+</html>

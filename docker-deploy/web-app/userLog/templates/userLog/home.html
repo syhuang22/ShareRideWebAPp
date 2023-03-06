@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome To Share Ride Service! </h1> 
+        <img src="../static/userLog/images/tesla.png" alt="tesla" width="500" height="333" >
+        <form action = "{% url 'userLog:driverInfo' %}" method = "POST">
+            <input type = "submit" value="Enter As Driver">
+        </form>
+        <form action = "{% url 'userLog:riderPage' %}" method = "POST">
+            <input type = "submit" value="Enter As Ride-Sharer">
+        </form>
+        <form action = "{% url 'userLog:owner' %}" method = "POST">
+            <input type = "submit" value="Enter As Owner">
+        </form>
+        <br>
+        <h2> Other Options:
+            <a href="{% url 'userLog:rideRequest' %}">Request For A Ride</a>
+        </h2>
+        <h3>
+            <a href="{% url 'userLog:login' %}">logout</a>
+        </h3>
+    </div>
+</body>
+</html>

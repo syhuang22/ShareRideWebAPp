@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Driver's page</h1>
+        <div>
+            <h2>Status</h2>
+            <label>First Name: {{driver.fname}}</label><br>
+            <label>Last Name: {{driver.lname}}</label><br>
+            <label>Car Type: {{driver.carType}}</label><br>
+            <label>License Plate Number: {{driver.license}}</label><br>
+            <label>Vehicle Capacity: {{driver.max_passenger}}</label><br>
+            <form action = "{% url 'DriverRegister' %}" method = "POST">
+                {% csrf_token %}
+                <input type = "submit" value="Edit Status">
+            </form>
+        </div><br>
+        <div>
+            <h2>Comfirmed Ride List Viewing</h2>
+            {% for request in requests %}
+                <h3>
+                    <strong><hr>
+                        <p>Request ID: {{ request.id }}</p>
+                        <p>Desitnation: {{ request.address }}</p>
+                        <a href="{% url 'ViewRideDetail' request.id %}">View Ride Detail</a>
+                    </strong>
+                </h3>
+            {% endfor %}
+        </div><br>
+        <div>
+            <h2>Search For A Ride To Claim</h2>
+            <form action = "{% url 'DriverRideSearch' %}" method = "POST">                
+                {% csrf_token %}  
+                <label for="cars">Your Car Type (Same As Above)</label><br>
+                    <select name="carType" style= "height: 40px; width: 30%; padding: 12px 20px;
+                        margin: 8px 0;" id="cars">
+                        <option value="SUV">SUV</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Crossover">Crossover</option>
+                        <option value="Minivan">Minivan</option>
+                        <option value="Any">Any</option>
+                    </select><br>
+                <label>Your Vehicle Capacity(Max of 8)</label><br>
+                <input type="number" style= "height: 40px; width: 30%" name="num_passenger" min="1" max="8"><br>
+                
+                <label>Special Request</label><br>
+                <input type="text" name="specialRequest" placeholder="N/A if not applicable"><br>
+                
+                <input type = "submit" value="Search">
+            </form>
+            <p> A driver should be able to search for open ride requests. Only requests
+                which fit within the driver’s vehicle capacity and match the vehicle type and special request info
+                (if either of those were specified in the ride request) should be shown. A driver can claim and
+                start a ride service, thus confirming it. Once closed, the ride owner and each sharer should be
+                nofied by email that the ride has been confirmed (hence no further changes are allowed).
+            </p> 
+        </div>
+        <h3> Other Options: <p><a href="{% url 'RideRequest' %}">Request For A Ride</a> </p>
+            
+            Ride Selection
+        </h3>
+        <p><a href="{% url 'home' %}">Back To Home Page</a> </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+input[type=text],input[type="email"],input[type="password"], [type=datetime-local], input[type=number] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}   
+input[type=submit]:hover {
+    background-color : #58a0b4;
+}
+
+div {
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+    border-style: solid;
+    border-width: medium;
+    border-radius: 2px;
+    
+    padding: 10px;
+    background: linear-gradient(-25deg, #ded9d7, #b5efab, #52caf1, #ecec13);
+    background-size: 400%, 400%;
+    animation: gradientBG 8s ease infinite;
+}
+input[type=submit] {
+    width: 30%;
+    background-color: #ea7398;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+h1, h2, h3{
+    color:rgb(53, 5, 104);
+    font-family: Garamond, serif;
+}
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+

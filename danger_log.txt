@@ -1,0 +1,11 @@
+In this project, we found out that there were some little bugs when the user was using our ride service website.
+
+1. When the users are filling the ride requests, if they miss one of the columns then it will triger an error. However, as long as the user fills every column carefully, then it will be fine.
+
+2. During the email testing, we found out that if we sent too many emails to the user, then our host email account will be banned. We need to apply for another new account to send the messages.
+
+3. In our design, the maximum capacity of the driver is eight so if there are too many sharers added to the ride, the driver is not able to take the ride anymore.
+
+4. Since we don't care about the time of the ride request, if they add a request that has passed, it is also allowed. Since the request cannot be canceled, it may cause some problems. However, in the real world, the driver will not take the ride in the past, so it won't cause any serious consequences.
+
+5. If the driver didn't match the users' special request in the ride request, those ride requests will not be able to be found. However, in the real world, it is also hard to find a taxi that is able to satisfy the special request of the ride owner. Therefore, it should be N/A in most situations and the driver will be able to confirm that ride request.

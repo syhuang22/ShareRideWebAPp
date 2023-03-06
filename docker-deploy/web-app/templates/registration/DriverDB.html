@@ -1,0 +1,8 @@
+<h1> Driver Database</h1>
+{%for driver in all%}
+    <strong> Driver: {{driver.fname}} {{driver.lname}}</strong> <br/>
+    Car type: {{driver.carType}} <br/>
+    License: {{driver.license}} <br/>
+    Capacity: {{driver.max_passenger}}<br/>
+    <hr>
+{%endfor%}

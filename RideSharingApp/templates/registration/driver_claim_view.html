@@ -1,0 +1,25 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+</head>
+
+<div>
+    <h1> Ride Status</h1>
+        <h2>
+            Destination: {{object.address}}</strong> <br/>
+            Arrival Time: {{object.dateTime}} <br/>
+            Vehicle Type: {{object.carType}} <br/>
+            Owner Username: {{object.owner.username}} <br/>
+            Sharer:
+            {% for sharer in object.sharer.all %}
+                {{sharer}}
+            {% endfor %}
+            <br/>
+        </h2>      
+        <form action = "{% url 'Complete' object.id %}" method = "POST"> 
+            {% csrf_token %}  
+            <input type = "submit" value="Mark Ride Complete">
+        </form>
+    <p><a href="{% url 'DriverPage' %}">Back To Driver Page</a> </p>
+    <p><a href="{% url 'home' %}">Back To Home Page</a> </p>
+</div>

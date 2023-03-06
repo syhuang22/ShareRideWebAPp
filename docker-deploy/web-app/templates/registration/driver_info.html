@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Driver Infomation</h1>
+        <form action = "{% url 'DriverRegister' %}" method = "POST">
+            {% csrf_token %}
+            <label>First Name</label><br>
+            <input type="text" name="fname" placeholder="first name"><br>
+            <label >Last Name</label><br>
+            <input type="text"name="lname"placeholder="last name"><br>
+            <label for="cars">Car Type</label><br>
+            <select name="carType" style= "height: 40px; width: 30%; padding: 12px 20px;
+                margin: 8px 0;" id="cars">
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Crossover">Crossover</option>
+                <option value="Minivan">Minivan</option>
+            </select><br>
+            <label>License Plate Number</label><br>
+            <input type="text"  name="license" placeholder="License Plate Number"><br>
+            <label>Number of Total Passengers(Max of 8)</label><br>
+            <input type="number" name="max_passenger" min="1" max="8"><br>
+            <input type = "submit" value = "Comfirm"> <br>
+        </form>
+        <p>
+            <a href="{% url 'DriverPage' %}">Back To Driver Page</a>
+        </p>
+        <p>
+            <a href="{% url 'home' %}">Back To Home Page</a> 
+        </p>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Driver's page</h1>
+        <div>
+            <h2>Status</h2>
+            <label>First Name:</label><br>
+            <label>Last Name:</label><br>
+            <label>Car Type:</label><br>
+            <label>License Plate Number:</label><br>
+            <label>Number of Total Passengers:</label><br>
+            <form action = "{% url 'userLog:driverInfo' %}" method = "POST">
+                <input type = "submit" value="Edit Status">
+            </form>
+        </div><br>
+        <div>
+            <h2>Search For A Ride</h2>
+            <p> A driver should be able to search for open ride requests. Only requests
+                which fit within the driver’s vehicle capacity and match the vehicle type and special request info
+                (if either of those were specified in the ride request) should be shown. A driver can claim and
+                start a ride service, thus confirming it. Once closed, the ride owner and each sharer should be
+                nofied by email that the ride has been confirmed (hence no further changes are allowed).
+            </p> 
+        </div>
+        <h3> Other Options:
+            <a href="{% url 'userLog:rideRequest' %}">Request For A Ride</a>
+            Ride Selection
+        </h3>
+        <a href="{% url 'userLog:home' %}">Back To Home Page</a>
+        
+    </div>
+    
+</body>
+</html>

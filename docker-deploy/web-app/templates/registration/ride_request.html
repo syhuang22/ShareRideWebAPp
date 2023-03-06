@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Ride Requesting</h1>
+        <form action = "{% url 'RideRequest' %}" method = "POST">
+            {% csrf_token %}
+                <label>Destination Address</label><br>
+                <input type="text" name="address" placeholder="destination"><br>
+                <label>Arrival Date/Time</label><br>
+                <input type="datetime-local" name="dateTime"><br>
+                <label>Number of Total Passengers(Max of 8)</label><br>
+                <input type="number" style= "height: 40px; width: 30%" name="num_passenger" min="1" max="8"><br>
+                <label for="cars">Car Type (Optional: Click Any If Not Specified)</label><br>
+                    <select name="carType" style= "height: 40px; width: 30%; padding: 12px 20px;
+                        margin: 8px 0;" id="cars">
+                        <option value="SUV">SUV</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Crossover">Crossover</option>
+                        <option value="Minivan">Minivan</option>
+                        <option value="Any">Any</option>
+                    </select><br>
+                <label>Share Ride?</label><br>
+                <select name="isShared" style= "height: 40px; width: 30%; padding: 12px 20px;
+                margin: 8px 0;">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select><br>
+                <label>Special Request</label><br>
+                <input type="text" name="specialRequest" placeholder="N/A if not applicable"><br>
+                
+                <input type = "submit" value = "Comfirm Request"> <br>
+        </form>
+        <h2>
+            <a href="{% url 'home' %}">Back To Home Page</a>
+        </h2>
+    </div>
+</body>
+</html>

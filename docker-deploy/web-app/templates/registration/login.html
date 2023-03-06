@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+<head>
+  
+</head>
+{% block content %}
+<div>
+  <h2>Share Ride Service Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value = "Login">
+</form>
+<p>Doesn't have an account? <a href="{% url 'signup' %}">register</a> </p>
+</div>
+
+{% endblock %}

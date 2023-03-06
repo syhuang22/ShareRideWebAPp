@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Ride Requesting</h1>
+        <form action = "{% url 'userLog:owner' %}" method = "POST">
+            {% csrf_token %}
+                <label>Destination Address</label><br>
+                <input type="text" name="destination" placeholder="destination"><br>
+                <label>Arrival Date/Time</label><br>
+                <input type="datetime-local" name="datetime"><br>
+                <label>Number of Total Passengers(Max of 8)</label><br>
+                <input type="number" style= "height: 40px; width: 30%" name="number of total passengers " min="1" max="8"><br>
+                <label>Share Ride?</label><br>
+                <select name="shareRide" style= "height: 40px; width: 30%; padding: 12px 20px;
+                margin: 8px 0;">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br>
+                <input type = "submit" value = "Comfirm Request"> <br>
+        </form>
+        <h2>
+            <a href="{% url 'userLog:home' %}">Back To Home Page</a>
+        </h2>
+    </div>
+</body>
+</html>

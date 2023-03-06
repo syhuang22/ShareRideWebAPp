@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div>
+{% if user.is_authenticated %}
+
+  <h1>Welcome {{ user.username }}!</h1>
+  <img src="../static/userLog/images/tesla.png" alt="tesla" width="500" height="333" >
+  <form action = "{% url 'DriverPage' %}" >
+    {% csrf_token %}
+    <input type = "submit" value="Driver">
+  </form>
+  <form action = "{% url 'Ridesharer' %}" method="post">
+    {% csrf_token %}
+    <input type = "submit" value="Ridesharer">
+  </form>
+  <form action = "{% url 'Owner' %}" method="post">
+    {% csrf_token %}
+    <input type = "submit" value="Owner">
+  </form>
+  <h2> Other Options:
+    <a href="{% url 'RideRequest' %}">Request For A Ride</a>
+  </h2>
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  
+
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
+</div>

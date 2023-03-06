@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'userLog/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Owner's page</h1>
+        <div>
+            <h2>Ride Request Editingg</h2>
+            <p>A ride owner should be able to edit the specific requested
+                aributes of the ride as long as the ride is not confirmed.
+            </p>
+        </div><br>
+        <div>
+            <h2>Ride Status Viewing</h2>
+            <a href="{% url 'StatusView' %}">View Ride Status</a>
+            <p>A ride owner or sharer should be able to view the 
+                status of their non-complete rides. For open ride requests, this should show the current ride
+                details (from the original request + any updates due to sharers joining the ride). For confirmed
+                ride requests, the driver and vehicle details should also be shown.
+            </p>
+        </div><br>
+        <h2> Other Options:
+            <a href="{% url 'userLog:rideRequest' %}">Request For A Ride</a>
+            <a href="{% url 'userLog:driverInfo' %}">Register As A Driver</a>
+            Ride Selection
+        </h2>
+        <a href="{% url 'userLog:home' %}">Back To Home Page</a>
+    </div>
+    
+</body>
+</html>
